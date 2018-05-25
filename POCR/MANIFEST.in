@@ -1,0 +1,4 @@
+graft POCR/templates
+graft POCR/static
+graft POCR/Uploads
+include POCR/schema.sql

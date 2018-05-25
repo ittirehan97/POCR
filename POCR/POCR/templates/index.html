@@ -1,0 +1,41 @@
+{% extends "header.html" %}
+
+{% block body %}
+
+<body background="{{url_for('static', filename='images/bg1.jpg')}}">
+
+    <div class="container-fluid" style="text-align:center;padding-top: 15px">
+        <p style="font-size:50px">POCR</p>
+        <p style="font-size:30px;color:#757575">Extract <span>text from images </span> within minutes</p>
+
+        <img src="{{url_for('static', filename='images/pocr.png')}}" style="text-align:center;padding-top: 50px;padding-bottom: 25px" >
+
+        <div class="container">
+
+          <a href="/extract"><button type="button" class="btn btn-default">Get Started</button></a>
+
+        </div>
+    </div>
+
+
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <h1>Create a Free Account</h1>
+                Sign up for free on POCR and get to extract text from images.
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <h1>Upload an Image</h1>
+                Upload an Image,
+                you want to get text from.
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <h1>Extract</h1>
+                Extract the text from the image
+                just by clicking on a button
+            </div>
+        </div>
+    </div>
+{% endblock %}

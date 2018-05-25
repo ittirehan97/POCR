@@ -1,0 +1,15 @@
+{% extends "header.html" %}
+
+{% block body %}
+<body>
+    <div class="container">
+        <br>
+        <h1>Upload The Image</h1>
+        <br>
+        <form method=post enctype=multipart/form-data>
+            <input type=file name=file>
+            <input class="btn btn-default" type=submit value=Download>
+        </form>
+    </div>
+</body>
+{% endblock %}

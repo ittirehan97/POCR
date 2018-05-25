@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content = "width=device-width, initial-scale=1.0">
+    <meta name="description" content="POCR lets you extract texts from images and pdfs and converts them to .docx format.">
+
+
+    <title>POCR</title>
+
+
+    <link href="{{url_for('static', filename='css/bootstrap.min.css' )}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='icons/pocrlogo.ico')}}" rel="shortcut icon">
+
+    <style>
+footer {
+    position: fixed;
+
+}
+</style>
+</head>
+
+<header>
+
+    <nav class="navbar navbar-expand-lg navbar-light justify-content-between" style="background-color: #00695C;" >
+        <a class="navbar-brand" href="/">
+            <img src="{{url_for('static', filename='images/pocrlogo.png')}}" style = "max-width:100px; margin-top: -7px;">
+        </a>
+        <div class="collapse navbar-collapse" id="navbarNav" >
+            <ul class="nav navbar-right">
+              <li class="nav-item" style="display: inline-block">
+                <a class="nav-link active" href="/"><font color="white">Home</font></a>
+              </li>
+              <li class="nav-item" style="display: inline-block">
+                <a class="nav-link" href="/extract"><font color="white">Extract</font></a>
+              </li>
+              <li class="nav-item" style="display: inline-block">
+                <a class="nav-link" href="/contact"><font color="white">Contact</font></a>
+              </li>
+            </ul>
+
+        </div>
+
+
+
+        <button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#logIn">
+  Log In!
+</button>
+    <div class="modal fade" id="logIn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Login Here!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+						  <form action="/login" class="form-inline" method="post">
+							<input type="text" class="form-control" placeholder="Username" name="username" value="">
+							 <input type="password" class="form-control" placeholder="Password" name="password" value="">
+							<input class="btn btn-light" type="submit" value="Login">
+						  </form>
+
+							<div class="container">
+							<br>
+						   <p>No account? <a href='/register'>Register here</a>.</p>
+						   <br>
+
+						  </div>
+					</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+        <!-- Button trigger modal -->
+<button type="button" class="btn btn-outline-light" data-toggle="modal" data-target="#signUp">
+  Sign Up!
+</button>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="signUp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModal">Sign Up Here!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+
+            <form method=post action="/register">
+                <dl>
+
+                    <dt><label for="username">Username</label>
+                    <dd><input id="username" name="username" type="text" value="">
+
+                    </dd>
+
+
+                    <dt><label for="email">Email Address</label>
+                    <dd><input id="email" name="email" type="text" value="">
+
+                    </dd>
+
+
+                  <dt><label for="password">New Password</label>
+                  <dd><input id="password" name="password" type="password" value="">
+
+                  </dd>
+
+
+                  <dt><label for="confirm">Repeat Password</label>
+                  <dd><input id="confirm" name="confirm" type="password" value="">
+
+                  </dd>
+
+
+                  <dt><label for="accept_tos">I accept the <a href="/about/tos" target="blank">Terms of Service</a> and <a href="/about/privacy-policy" target="blank">Privacy Notice</a> (as per May 14, 2018)</label>
+                  <dd><input id="accept_tos" name="accept_tos" type="checkbox" value="y">
+
+                  </dd>
+
+						  </dl>
+						  <p><input type=submit value=Register>
+						</form>
+
+				</div>
+			  </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+    </nav>
+
+
+</header>
+
+
+<body background="{{url_for('static', filename='images/bg1.jpg')}}">
+<div class="container" style="min-height:100% width:80%">
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+	    {% for message in messages %}
+		  <div class="alert alert-success alert-dismissible fade show" role="alert">
+              {{message}}
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+          </button>
+
+		  </div>
+		{% endfor %}
+	  {% endif %}
+	{% endwith %}
+
+	{% block body %}{% endblock %}
+	</div>
+
+
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+
+</body>
+
+
+
+</html>
